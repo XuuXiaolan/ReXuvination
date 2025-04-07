@@ -1,8 +1,8 @@
 {
-  "name": "ReXuvination_Experimental",
+  "name": "ReXuvination",
   "version_number": "0.0.1",
   "website_url": "https://github.com/XuuXiaolan/ReXuvination",
-  "description": "Example Description.",
+  "description": "Mod that tries to optimise various things in the game.",
   "dependencies": [
     "BepInEx-BepInExPack-5.4.2100"
   ]
