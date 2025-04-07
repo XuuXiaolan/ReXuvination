@@ -19,6 +19,7 @@ static class QuickMenuManagerPatch
         foreach (EnemyType enemy in enemyArray)
         {
             if (String.IsNullOrEmpty(enemy.enemyName)) continue;
+            if (ReXuvination.PluginConfig.ConfigEnemyBlacklist.Value.Contains(enemy.enemyName)) continue;
             foreach (var enemyAICollisionDetect in enemy.enemyPrefab.GetComponentsInChildren<EnemyAICollisionDetect>())
             {
                 foreach (var collider in enemyAICollisionDetect.gameObject.GetComponents<Collider>())

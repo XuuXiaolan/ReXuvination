@@ -44,7 +44,7 @@ internal class ReXuvination : BaseUnityPlugin
             
             Harmony.PatchAll();
             
-            Log.LogInfo(NAME + " v" + VERSION + " Loaded!");
+            Log.LogInfo(NAME + " v" + VERSION + " Loaded! also you lost the game!");
             
         }
         catch (Exception ex)
@@ -54,13 +54,18 @@ internal class ReXuvination : BaseUnityPlugin
     }
     internal static class PluginConfig
     {
+        public static ConfigEntry<string> ConfigEnemyBlacklist { get; private set; }
+
         internal static void Init()
         {
             var config = INSTANCE.Config;
             
             config.SaveOnConfigSet = false;
             //Initialize Configs
-
+            ConfigEnemyBlacklist = config.Bind("EnemyAICollisionDetect Options",
+                        "Enemies | Blacklist",
+                        "",
+                        "comma separated list of enemies to not optimise.");
             config.SaveOnConfigSet = true;
             CleanAndSave();
         }
