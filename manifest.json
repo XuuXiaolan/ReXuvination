@@ -1,0 +1,9 @@
+{
+  "name": "ReXuvination_Experimental",
+  "version_number": "0.0.1",
+  "website_url": "https://github.com/XuuXiaolan/ReXuvination",
+  "description": "Example Description.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2100"
+  ]
+}
