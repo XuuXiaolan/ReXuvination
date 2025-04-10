@@ -13,3 +13,7 @@ If you're interested in helping with the development of the mod, feel free to re
 
 - Might look into optimising animators a bit.
 - PlayerPhysicsRegion colliders could also do with being optimised.
+
+### Credits
+
+- Icon: Mr. Salted Beef

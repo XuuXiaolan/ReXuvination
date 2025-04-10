@@ -1,4 +1,9 @@
-# v0.0.3
+# v0.0.4
+
+- New Icon.
+- Fixed an oopsie that caused enemies to be unable to open doors.
+
+## v0.0.3
 
 - Added null check to enemy prefab.
 

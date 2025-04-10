@@ -15,7 +15,7 @@ static class QuickMenuManagerPatch
             return;
 
         var enemyArray = Resources.FindObjectsOfTypeAll<EnemyType>(); // thanks, Zaggy1024
-        LayerMask enemiesAndPlayerMask = LayerMask.GetMask("Enemies", "Player");
+        LayerMask enemiesAndPlayerAndInteractableObjectMask = LayerMask.GetMask("InteractableObject", "Enemies", "Player");
         foreach (EnemyType enemy in enemyArray)
         {
             if (String.IsNullOrEmpty(enemy.enemyName)) continue;
@@ -26,7 +26,7 @@ static class QuickMenuManagerPatch
                 foreach (var collider in enemyAICollisionDetect.gameObject.GetComponents<Collider>())
                 {
                     if (!collider.isTrigger) continue;
-                    collider.excludeLayers = ~enemiesAndPlayerMask;
+                    collider.excludeLayers = ~enemiesAndPlayerAndInteractableObjectMask;
                 }
             }
             ReXuvination.Log.LogDebug($"{enemy.enemyName}'s colliders have been optimised!");
