@@ -1,4 +1,12 @@
-# v0.0.4
+# v0.1.1
+
+- I forgor to do the thing.
+
+## v0.1.0
+
+- Fixed another oopsie with potentially hazards and vehicle interactions with enemies.
+
+## v0.0.4
 
 - New Icon.
 - Fixed an oopsie that caused enemies to be unable to open doors.
