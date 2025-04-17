@@ -1,6 +1,10 @@
-# v0.2.0
+# v0.3.0
 
-- Added the optimisation patch for PlayerPhysicsRegions.
+- Added optimisation patches for `SandSpiderWebTrap`, `QuicksandTrigger`, `DoorLock` and `BridgeTrigger`.
+
+## v0.2.0
+
+- Added the optimisation patch for `PlayerPhysicsRegions`.
 
 ## v0.1.1
 

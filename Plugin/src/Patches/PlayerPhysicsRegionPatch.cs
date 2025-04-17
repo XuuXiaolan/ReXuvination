@@ -23,6 +23,6 @@ static class PlayerPhysicsRegionPatch
             
             collider.excludeLayers = ~playersRagdollAndPropsMask;
         }
-        ReXuvination.Log.LogInfo($"Patched PlayerPhysicsRegion.Awake in Object: {__instance.GetInstanceID()}");
+        ReXuvination.Log.LogDebug($"Optimised Collider layers in PlayerPhysicsRegion for Object: {__instance.gameObject}");
     }
 }
