@@ -33,6 +33,11 @@ internal class ReXuvination
                 {
                     type.AddMethod("Awake", Mono.Cecil.MethodAttributes.Public);
                 }
+
+                if (type.FullName == "QuicksandTrigger")
+                {
+                    type.AddMethod("Awake", Mono.Cecil.MethodAttributes.Public);
+                }
             }
         }
         
