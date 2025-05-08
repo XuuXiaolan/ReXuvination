@@ -19,7 +19,7 @@ public static class LobbyCompatibilityChecker
     [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
     public static void Init()
     {
-        PluginHelper.RegisterPlugin(ReXuvination.GUID, System.Version.Parse(ReXuvination.VERSION), CompatibilityLevel.Everyone, VersionStrictness.Minor);
+        PluginHelper.RegisterPlugin(ReXuvination.GUID, System.Version.Parse(ReXuvination.VERSION), CompatibilityLevel.ClientOnly, VersionStrictness.Minor);
     }
     
 }
