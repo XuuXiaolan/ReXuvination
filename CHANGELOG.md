@@ -1,4 +1,12 @@
-# v0.3.0
+# v0.4.0
+
+- Optimised `EnemyAICollisionDetect` even further by making it so that enemies that don't typically collide with other enemies don't send eachother callbacks unless there actually is an interaction.
+
+## v0.3.1
+
+- Fixed mod not being properly clientside thanks to ButteryStancakes.
+
+## v0.3.0
 
 - Added optimisation patches for `SandSpiderWebTrap`, `QuicksandTrigger`, `DoorLock` and `BridgeTrigger`.
 

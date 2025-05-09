@@ -8,6 +8,7 @@ If you're interested in helping with the development of the mod, feel free to re
 - [BENCHMARKED] Optimises EnemyAICollisionDetect colliders.
   - Currently reduces calls to EnemyAICollisionDetect.OnTriggerStay by about half.
   - Tested with spawning 200 enemies and seeing how many calls to EnemyAICollisionDetect.OnTriggerStay are done, without the optimisation the calls averaged between 1200 and 2400, but with the optimisation it averaged around 600 and 1300 instead.
+  - The optimisation will be more effective depending on the enemies on the map, but in certain cases now the calls are reduced to almost none.
 - [NOT BENCHMARKED (BUT SHOULD STILL BE HELPFUL)] Optimises PlayerPhysicsRegions, BridgeTrigger, DoorLock, QuicksandTrigger and SandSpiderWebTrap colliders.
 
 ## Upcoming Features
