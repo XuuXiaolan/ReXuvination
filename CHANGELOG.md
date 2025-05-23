@@ -1,6 +1,20 @@
-# v0.4.0
+# v1.0.0
+
+- Optimised all I could with every base game collision type, added optimisation patches for the following:
+  - BridgeTriggerType2
+  - GrabbableObjectPhysicsTrigger
+  - InteractTrigger
+  - KillLocalPlayer
+  - Landmine
+  - OutOfBoundsTrigger
+  - TerrainObstacleTrigger
+  - ToggleFogTrigger
+  - CompanyMonsterCollisionDetect.
+
+## v0.4.0
 
 - Optimised `EnemyAICollisionDetect` even further by making it so that enemies that don't typically collide with other enemies don't send eachother callbacks unless there actually is an interaction.
+- i.e. a bunch of hoarding bugs next to eachother won't be spamming eachother unnecessary collision callbacks because they can't collide with eachother anymore.
 
 ## v0.3.1
 

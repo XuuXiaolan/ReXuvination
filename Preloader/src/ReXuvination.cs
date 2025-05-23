@@ -29,14 +29,18 @@ internal class ReXuvination
         {
             foreach (TypeDefinition type in assembly.MainModule.Types)
             {
-                if (type.FullName == "PlayerPhysicsRegion")
+                switch (type.FullName)
                 {
-                    type.AddMethod("Awake", Mono.Cecil.MethodAttributes.Public);
-                }
-
-                if (type.FullName == "QuicksandTrigger")
-                {
-                    type.AddMethod("Awake", Mono.Cecil.MethodAttributes.Public);
+                    case "BridgeTriggerType2":
+                    case "QuicksandTrigger":
+                    case "GrabbableObjectPhysicsTrigger":
+                    case "CompanyMonsterCollisionDetect":
+                    case "PlayerPhysicsRegion":
+                    case "KillLocalPlayer":
+                    case "ToggleFogTrigger":
+                    case "TerrainObstacleTrigger":
+                        type.AddMethod("Awake", Mono.Cecil.MethodAttributes.Public);
+                        break;
                 }
             }
         }
