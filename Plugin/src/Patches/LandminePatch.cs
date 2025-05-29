@@ -20,8 +20,9 @@ static class LandminePatch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~playersRagdollAndPropsMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in Landmine for Object: {__instance.gameObject}");
     }

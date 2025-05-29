@@ -20,8 +20,9 @@ static class TerrainObstacleTriggerPatch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~vehicleMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in TerrainObstacleTrigger for Object: {__instance.gameObject}");
     }

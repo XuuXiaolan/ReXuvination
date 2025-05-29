@@ -16,6 +16,7 @@ static class ToggleFogTriggerPatch
                 continue;
             
             collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in ToggleFogTrigger for Object: {__instance.gameObject}");
     }

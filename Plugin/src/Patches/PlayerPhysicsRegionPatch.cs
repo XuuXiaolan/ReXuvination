@@ -20,8 +20,9 @@ static class PlayerPhysicsRegionPatch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~playersRagdollAndPropsMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in PlayerPhysicsRegion for Object: {__instance.gameObject}");
     }

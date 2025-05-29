@@ -20,8 +20,9 @@ static class OutOfBoundsTriggerPatch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~playersAndRagdollMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in OutOfBoundsTrigger for Object: {__instance.gameObject}");
     }

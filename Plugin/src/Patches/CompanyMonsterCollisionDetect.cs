@@ -14,8 +14,9 @@ static class CompanyMonsterCollisionDetectPatch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in CompanyMonsterCollisionDetect for Object: {__instance.gameObject}");
     }

@@ -1,4 +1,8 @@
-# v1.0.0
+# v1.0.1
+
+- Fixed an issue with Colliders and enemies not being able doo due to priority.
+
+## v1.0.0
 
 - Optimised all I could with every base game collision type, added optimisation patches for the following:
   - BridgeTriggerType2

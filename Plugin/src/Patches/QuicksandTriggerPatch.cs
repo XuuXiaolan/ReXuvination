@@ -16,6 +16,7 @@ static class QuicksandTriggerPatch
                 continue;
             
             collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in QuicksandTrigger for Object: {__instance.gameObject}");
     }

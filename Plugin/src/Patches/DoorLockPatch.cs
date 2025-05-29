@@ -20,8 +20,9 @@ static class DoorLockPatch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~enemiesMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in DoorLock for Object: {__instance.gameObject}");
     }

@@ -14,8 +14,9 @@ static class BridgeTriggerType2Patch
         {
             if (!collider.isTrigger)
                 continue;
-            
+
             collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in BridgeTriggerType2 for Object: {__instance.gameObject}");
     }

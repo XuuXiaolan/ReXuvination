@@ -14,6 +14,7 @@ static class SandSpiderWebTrapPatch
         {
             if (!collider.isTrigger) continue;
             collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.layerOverridePriority = -2;
         }
 
         ReXuvination.Log.LogDebug($"{__instance.gameObject}'s colliders have been optimised!");
