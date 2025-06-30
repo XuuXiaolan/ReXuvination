@@ -5,9 +5,15 @@ namespace ReXuvination.src.Patches;
 [HarmonyPatch(typeof(InteractTrigger))]
 static class InteractTriggerPatch
 {
+    private static int enemiesAndPlayersMask = 0;
+
     [HarmonyPatch(nameof(InteractTrigger.Start)), HarmonyPostfix]
     public static void InteractTriggerStartPatch(InteractTrigger __instance)
     {
+        if (enemiesAndPlayersMask == 0)
+        {
+            enemiesAndPlayersMask = LayerMask.GetMask("Enemies") | StartOfRound.Instance.playersMask;
+        }
         Collider[] colliders = __instance.GetComponents<Collider>();
 
         foreach (Collider collider in colliders)
@@ -15,7 +21,7 @@ static class InteractTriggerPatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.excludeLayers = ~enemiesAndPlayersMask;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in InteractTrigger for Object: {__instance.gameObject}");

@@ -5,14 +5,14 @@ namespace ReXuvination.src.Patches;
 [HarmonyPatch(typeof(DoorLock))]
 static class DoorLockPatch
 {
-    private static int enemiesMask = 0;
+    private static int enemiesAndPlayersMask = 0;
 
     [HarmonyPatch(nameof(DoorLock.Awake)), HarmonyPostfix]
     public static void DoorLockAwakePatch(DoorLock __instance)
     {
-        if (enemiesMask == 0)
+        if (enemiesAndPlayersMask == 0)
         {
-            enemiesMask = LayerMask.GetMask("Enemies");
+            enemiesAndPlayersMask = LayerMask.GetMask("Enemies") | StartOfRound.Instance.playersMask;
         }
         Collider[] colliders = __instance.GetComponents<Collider>();
 
@@ -21,7 +21,7 @@ static class DoorLockPatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~enemiesMask;
+            collider.excludeLayers = ~enemiesAndPlayersMask;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in DoorLock for Object: {__instance.gameObject}");
