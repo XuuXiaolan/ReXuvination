@@ -8,6 +8,9 @@ static class ToggleFogTriggerPatch
     [HarmonyPatch("Awake"), HarmonyPostfix]
     public static void ToggleFogTriggerAwakePatch(ToggleFogTrigger __instance)
     {
+        if (StartOfRound.Instance == null)
+            return;
+
         Collider[] colliders = __instance.GetComponents<Collider>();
 
         foreach (Collider collider in colliders)
@@ -15,7 +18,8 @@ static class ToggleFogTriggerPatch
             if (!collider.isTrigger)
                 continue;
             
-            collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.includeLayers |= StartOfRound.Instance.playersMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in ToggleFogTrigger for Object: {__instance.gameObject}");

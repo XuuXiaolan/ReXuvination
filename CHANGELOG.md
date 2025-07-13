@@ -1,4 +1,9 @@
-# v1.0.1
+# v1.1.0
+
+- Change the system to be instead of excluding layers I only include essential layers, this means that other mods just need to the include layers if they want to add some collisions that arent normally in vanilla.
+- Added null checks for mods that access some stuff too early before StartOfRound is created.
+
+## v1.0.1
 
 - Fixed an issue with Colliders and enemies not being able doo due to priority.
 

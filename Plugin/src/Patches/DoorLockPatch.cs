@@ -12,7 +12,7 @@ static class DoorLockPatch
     {
         if (enemiesAndPlayersMask == 0)
         {
-            enemiesAndPlayersMask = LayerMask.GetMask("Enemies") | StartOfRound.Instance.playersMask;
+            enemiesAndPlayersMask = LayerMask.GetMask("Enemies", "Player");
         }
         Collider[] colliders = __instance.GetComponents<Collider>();
 
@@ -21,7 +21,8 @@ static class DoorLockPatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~enemiesAndPlayersMask;
+            collider.includeLayers |= enemiesAndPlayersMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in DoorLock for Object: {__instance.gameObject}");

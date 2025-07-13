@@ -12,7 +12,7 @@ static class OutOfBoundsTriggerPatch
     {
         if (playersAndRagdollMask == 0)
         {
-            playersAndRagdollMask = LayerMask.GetMask("Player", "PlayerRagdoll");
+            playersAndRagdollMask = LayerMask.GetMask("PlayerRagdoll", "Player");
         }
         Collider[] colliders = __instance.GetComponents<Collider>();
 
@@ -21,7 +21,8 @@ static class OutOfBoundsTriggerPatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~playersAndRagdollMask;
+            collider.includeLayers |= playersAndRagdollMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in OutOfBoundsTrigger for Object: {__instance.gameObject}");

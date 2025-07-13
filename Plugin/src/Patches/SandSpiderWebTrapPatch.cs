@@ -9,11 +9,17 @@ static class SandSpiderWebTrapPatch
     [HarmonyPatch(nameof(SandSpiderWebTrap.Awake)), HarmonyPostfix] // thanks, funo
     static void SandSpiderWebTrapStartPatch(SandSpiderWebTrap __instance)
     {
+        if (StartOfRound.Instance == null)
+            return;
+
         Collider[] colliders = __instance.GetComponents<Collider>();
         foreach (Collider collider in colliders)
         {
-            if (!collider.isTrigger) continue;
-            collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            if (!collider.isTrigger)
+                continue;
+
+            collider.includeLayers |= StartOfRound.Instance.playersMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = -2;
         }
 

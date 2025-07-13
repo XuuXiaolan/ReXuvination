@@ -15,8 +15,8 @@ static class QuickMenuManagerPatch
             return;
 
         var enemyArray = Resources.FindObjectsOfTypeAll<EnemyType>(); // thanks, Zaggy1024
-        LayerMask enemiesExcludeLayersWithoutEnemyCollisions = LayerMask.GetMask("InteractableObject", "Player", "Triggers", "MapHazards");
-        LayerMask enemiesExcludeLayersWithEnemyCollisions = enemiesExcludeLayersWithoutEnemyCollisions | LayerMask.GetMask("Enemies");
+        LayerMask enemiesIncludeLayersWithoutEnemyCollisions = LayerMask.GetMask("InteractableObject", "Player", "Triggers", "MapHazards");
+        LayerMask enemiesMask = LayerMask.GetMask("Enemies");
         foreach (EnemyType enemy in enemyArray)
         {
             if (String.IsNullOrEmpty(enemy.enemyName))
@@ -37,14 +37,12 @@ static class QuickMenuManagerPatch
 
                     if (enemyAICollisionDetect.canCollideWithEnemies)
                     {
-                        collider.excludeLayers = ~enemiesExcludeLayersWithEnemyCollisions;
+                        collider.includeLayers |= enemiesMask;
                         collider.layerOverridePriority = 1;
                     }
-                    else
-                    {
-                        collider.excludeLayers = ~enemiesExcludeLayersWithoutEnemyCollisions;
-                        collider.layerOverridePriority = -1;
-                    }
+                    collider.includeLayers |= enemiesIncludeLayersWithoutEnemyCollisions;
+                    collider.excludeLayers = 0;
+                    collider.layerOverridePriority = -1;
                 }
             }
             ReXuvination.Log.LogDebug($"{enemy.enemyName}'s colliders have been optimised!");

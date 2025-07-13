@@ -21,7 +21,8 @@ static class GrabbableObjectPhysicsTriggerPatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~enemiesAndPlayerMask;
+            collider.includeLayers |= enemiesAndPlayerMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = 2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in GrabbableObjectPhysicsTrigger for Object: {__instance.gameObject}");

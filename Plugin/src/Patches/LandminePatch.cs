@@ -12,7 +12,7 @@ static class LandminePatch
     {
         if (playersRagdollAndPropsMask == 0)
         {
-            playersRagdollAndPropsMask = LayerMask.GetMask("Props", "Player", "PlayerRagdoll");
+            playersRagdollAndPropsMask = LayerMask.GetMask("Props", "PlayerRagdoll", "Player");
         }
         Collider[] colliders = __instance.GetComponents<Collider>();
 
@@ -21,7 +21,8 @@ static class LandminePatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~playersRagdollAndPropsMask;
+            collider.includeLayers |= playersRagdollAndPropsMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in Landmine for Object: {__instance.gameObject}");

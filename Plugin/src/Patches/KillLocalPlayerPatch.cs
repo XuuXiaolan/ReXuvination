@@ -21,7 +21,8 @@ static class KillLocalPlayerPatch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~enemiesMask;
+            collider.includeLayers |= enemiesMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = 2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in KillLocalPlayer for Object: {__instance.gameObject}");

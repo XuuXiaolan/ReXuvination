@@ -8,6 +8,9 @@ static class BridgeTriggerType2Patch
     [HarmonyPatch("Awake"), HarmonyPostfix]
     public static void BridgeTriggerType2AwakePatch(BridgeTriggerType2 __instance)
     {
+        if (StartOfRound.Instance == null)
+            return;
+
         Collider[] colliders = __instance.GetComponents<Collider>();
 
         foreach (Collider collider in colliders)
@@ -15,7 +18,8 @@ static class BridgeTriggerType2Patch
             if (!collider.isTrigger)
                 continue;
 
-            collider.excludeLayers = ~StartOfRound.Instance.playersMask;
+            collider.includeLayers |= StartOfRound.Instance.playersMask;
+            collider.excludeLayers = 0;
             collider.layerOverridePriority = -2;
         }
         ReXuvination.Log.LogDebug($"Optimised Collider layers in BridgeTriggerType2 for Object: {__instance.gameObject}");
